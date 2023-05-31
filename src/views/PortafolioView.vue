@@ -14,7 +14,7 @@ import ThePortafolio from '@/components/ThePortafolio.vue';
   <v-app class="portafolio">
     <v-main tag="portafolio" class="grey lighten-2">
       <v-container>
-        <ThePortafolio msg="Bienvenido Equipo 28" />
+        <ThePortafolio msg="Bienvenido a Naga" />
       </v-container>
     </v-main>
   </v-app>

@@ -9,7 +9,7 @@
       </v-card-title>
 
       <div style="width: 15%;" class="d-flex justify-center align-content-center mt-1">
-        <a href="https://github.com/Maikpwwq/Semana-4-28-frontend" target="_blank">
+        <a href="https://github.com/Maikpwwq/Naga-Regeneracion-Aguas-Frontend" target="_blank">
           <img src="/img/logoGit.png" class="img-flui" title="Repositorio Github" width="20px" height="20px"
             alt="Naga Regeneración de aguas" /> 
         </a>
