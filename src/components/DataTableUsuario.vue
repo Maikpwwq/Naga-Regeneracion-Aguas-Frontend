@@ -1,4 +1,4 @@
-<script lang="ts">
+<script >
 import { useTokenStore } from "@/stores/token";
 import axios from 'axios';
 
@@ -6,50 +6,52 @@ const tokenStore = useTokenStore();
 
 export default {
   name: 'DataTableUsuario',
-  data: () => ({
-    dialog: false,
-    dialogDelete: false,
-    cargando: true,
-    headers: [
-      { text: 'ID', value: 'id' },
-      {
-        text: 'Nombre',
-        align: 'start',
-        sortable: true,
-        value: 'nombre',
+  data() {
+    return {
+      dialog: false,
+      dialogDelete: false,
+      cargando: true,
+      headers: [
+        { text: 'ID', value: 'id' },
+        {
+          text: 'Nombre',
+          align: 'start',
+          sortable: true,
+          value: 'nombre',
+        },
+        { text: 'Correo', value: 'email' },
+        { text: 'Rol', value: 'rol' },
+        { text: 'Estado', value: 'estado' },
+        { text: 'Actions', value: 'actions', sortable: false },
+      ],
+      usuarios: [],
+      editedIndex: -1,
+      editedItem: {
+        id: 0,
+        nombre: '',
+        email: '',
+        rol: '',
+        password: '',
+        tipo_documento: '',
+        num_documento: '',
+        direccion: '',
+        telefono: '',
+        estado: 0
       },
-      { text: 'Correo', value: 'email' },
-      { text: 'Rol', value: 'rol' },
-      { text: 'Estado', value: 'estado' },
-      { text: 'Actions', value: 'actions', sortable: false },
-    ],
-    usuarios: [],
-    editedIndex: -1,
-    editedItem: {
-      id: 0,
-      nombre: '',
-      email: '',
-      rol: '',
-      password: '',
-      tipo_documento: '',
-      num_documento: '',
-      direccion: '',
-      telefono: '',
-      estado: 0
-    },
-    defaultItem: {
-      id: 0,
-      nombre: '',
-      email: '',
-      rol: '',
-      password: '',
-      tipo_documento: '',
-      num_documento: '',
-      direccion: '',
-      telefono: '',
-      estado: 0
-    },
-  }),
+      defaultItem: {
+        id: 0,
+        nombre: '',
+        email: '',
+        rol: '',
+        password: '',
+        tipo_documento: '',
+        num_documento: '',
+        direccion: '',
+        telefono: '',
+        estado: 0
+      },
+    }
+  },
 
   computed: {
     formTitle() {
@@ -314,8 +316,12 @@ export default {
           </v-card>
         </v-dialog>
       </v-toolbar>
+      <pre>
+        {{ this.usuarios }}
+      </pre>
     </template>
-    <template v-slot:[`item.actions`]="{ item }">
+    <template v-slot="{ item }"> 
+      <!-- :[`item.actions`] -->
       <v-icon size="small" class="mr-2" @click="editItem(item)">
         mdi-pencil
       </v-icon>
@@ -334,8 +340,5 @@ export default {
         Reset
       </v-btn>
     </template>
-    <pre>
-          {{ $data.usuarios }}
-        </pre>
   </v-data-table>
 </template>

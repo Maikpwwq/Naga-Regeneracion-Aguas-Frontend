@@ -1,62 +1,64 @@
-<script lang="ts">
+<script >
 import { useTokenStore } from "@/stores/token";
 import axios from 'axios';
 const tokenStore = useTokenStore();
 
 export default {
   name: 'DataTableArticulo',
-  data: () => ({
-    dialog: false,
-    dialogDelete: false,
-    cargando: true,
-    headers: [
-      { text: 'ID', value: 'id' },
-      {
-        text: 'Nombre',
-        align: 'start',
-        sortable: true,
-        value: 'nombre',
-      },
-      { text: 'Descripción', value: 'descripcion' },
-      { text: 'Categoría', value: 'categoria.id' }, // categoria.nombre
-      { text: 'Código', value: 'codigo' },
-      { text: 'Estado', value: 'estado' },
-      { text: 'Actions', value: 'actions', sortable: false },
-    ],
-    articulos: [],
-    categorias: [],
-    categoria: {
-      id: 0,
-      nombre: ''
-    },
-    editedIndex: -1,
-    editedItem: {
-      id: 0,
-      codigo: '',
-      nombre: '',
-      descripcion: '',
-      precio_venta: 0,
-      stock: 0,
-      estado: 0,
+  data() {
+    return {
+      dialog: false,
+      dialogDelete: false,
+      cargando: true,
+      headers: [
+        { text: 'ID', value: 'id' },
+        {
+          text: 'Nombre',
+          align: 'start',
+          sortable: true,
+          value: 'nombre',
+        },
+        { text: 'Descripción', value: 'descripcion' },
+        { text: 'Categoría', value: 'categoria.id' }, // categoria.nombre
+        { text: 'Código', value: 'codigo' },
+        { text: 'Estado', value: 'estado' },
+        { text: 'Actions', value: 'actions', sortable: false },
+      ],
+      articulos: [],
+      categorias: [],
       categoria: {
         id: 0,
         nombre: ''
       },
-    },
-    defaultItem: {
-      id: 0,
-      codigo: '',
-      nombre: '',
-      descripcion: '',
-      precio_venta: 0,
-      stock: 0,
-      estado: 0,
-      categoria: {
+      editedIndex: -1,
+      editedItem: {
         id: 0,
-        nombre: ''
+        codigo: '',
+        nombre: '',
+        descripcion: '',
+        precio_venta: 0,
+        stock: 0,
+        estado: 0,
+        categoria: {
+          id: 0,
+          nombre: ''
+        },
       },
-    },
-  }),
+      defaultItem: {
+        id: 0,
+        codigo: '',
+        nombre: '',
+        descripcion: '',
+        precio_venta: 0,
+        stock: 0,
+        estado: 0,
+        categoria: {
+          id: 0,
+          nombre: ''
+        },
+      },
+    }
+  },
 
   computed: {
     formTitle() {
@@ -75,10 +77,10 @@ export default {
   },
 
   created() {
-      this.initialize();
-      this.list();
-      this.listCategorias();
-    },
+    this.initialize();
+    this.list();
+    this.listCategorias();
+  },
 
   methods: {
     initialize() {
@@ -247,10 +249,10 @@ export default {
       }
       this.close()
     },
-    
+
   },
 
-  
+
 }
 </script>
 
@@ -330,8 +332,12 @@ export default {
           </v-card>
         </v-dialog>
       </v-toolbar>
+      <pre>
+        {{ $data.articulos &&  $data.categorias }}
+      </pre>
     </template>
-    <template v-slot:[`item.actions`]="{ item }">
+    <template v-slot="{ item }">
+      <!-- :[`item.actions`] -->
       <v-icon size="small" class="mr-2" @click="editItem(item)">
         mdi-pencil
       </v-icon>
@@ -350,8 +356,5 @@ export default {
         Reset
       </v-btn>
     </template>
-    <pre>
-        {{ $data.usuarios }}
-      </pre>
   </v-data-table>
 </template>

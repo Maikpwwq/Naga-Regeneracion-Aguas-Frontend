@@ -1,45 +1,49 @@
-<script lang="ts">
+<script >
+// lang="ts"
 import axios from 'axios';
 import { useTokenStore } from "@/stores/token";
 const tokenStore = useTokenStore();
 
 export default {
+  // props:{},
   name: 'DataTableCategoria',
-  data: () => ({
-    dialog: false,
-    dialogDelete: false,
-    cargando: true,
-    headers: [
-      { text: 'ID', value: 'id' },
-      {
-        text: 'Nombre',
-        align: 'start',
-        sortable: true,
-        value: 'nombre',
+  data() {
+    return {
+      dialog: false,
+      dialogDelete: false,
+      cargando: true,
+      headers: [
+        { text: 'ID', value: 'id' },
+        {
+          text: 'Nombre',
+          align: 'start',
+          sortable: true,
+          value: 'nombre',
+        },
+        {
+          text: 'Descripción', value: 'descripcion',
+        },
+        {
+          text: 'Estado', value: 'estado',
+        },
+        { text: 'Actions', value: 'actions', sortable: false },
+      ],
+      categorias: [],
+      editedIndex: -1,
+      editedItem: {
+        id: 0,
+        nombre: '',
+        descripcion: '',
+        estado: 0
       },
-      {
-        text: 'Descripción', value: 'descripcion',
+      defaultItem: {
+        id: 0,
+        nombre: '',
+        descripcion: '',
+        estado: 0
       },
-      {
-        text: 'Estado', value: 'estado',
-      },
-      { text: 'Actions', value: 'actions', sortable: false },
-    ],
-    categorias: [],
-    editedIndex: -1,
-    editedItem: {
-      id: 0,
-      nombre: '',
-      descripcion: '',
-      estado: 0
-    },
-    defaultItem: {
-      id: 0,
-      nombre: '',
-      descripcion: '',
-      estado: 0
-    },
-  }),
+    }
+  },
 
   computed: {
     formTitle() {
@@ -274,8 +278,12 @@ export default {
           </v-card>
         </v-dialog>
       </v-toolbar>
+      <pre>
+        {{ $data.categorias }}
+      </pre>
     </template>
-    <template v-slot:[`item.actions`]="{ item }">
+    <template v-slot="{ item }">
+      <!-- :[`item.actions`] -->
       <v-icon size="small" class="mr-2" @click="editItem(item)">
         mdi-pencil
       </v-icon>
@@ -294,8 +302,6 @@ export default {
         Reset
       </v-btn>
     </template>
-    <pre>
-          {{ $data.categorias }}
-        </pre>
+
   </v-data-table>
 </template>

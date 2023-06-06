@@ -1,13 +1,15 @@
 <script lang="ts">
 // import { validationMixin } from 'vuelidate' deprecated
-import { useVuelidate } from '@vuelidate/core'
+// import { useVuelidate } from '@vuelidate/core'
 import { required, maxLength, email } from '@vuelidate/validators'
 
 export default {
   name: 'SecFooter',
 
   // mixins: [validationMixin], deprecated
-  setup: () => ({ v$: useVuelidate() }),
+  // setup() {
+  //   return { v$: useVuelidate() }
+  // },
 
   validations: {
     name: { required, maxLength: maxLength(10) },
@@ -21,7 +23,8 @@ export default {
   },
 
   data: () => ({
-    form: {},
+    // v$: useVuelidate(),
+    form: null,
     name: '',
     email: '',
     select: null,
@@ -36,39 +39,39 @@ export default {
   computed: {
     checkboxErrors() {
       const errors: any[] = []
-      if (!this.v$.checkbox.$dirty) return errors
-      !this.v$.checkbox.checked && errors.push('Debes aceptar continuar!')
+      // if (!this.v$.checkbox.$dirty) return errors
+      // !this.v$.checkbox.checked && errors.push('Debes aceptar continuar!')
       return errors
     },
     selectErrors() {
       const errors: any[] = []
-      if (!this.v$.select.$dirty) return errors
-      !this.v$.select.required && errors.push('El servicio es obligatorio')
+      // if (!this.v$.select.$dirty) return errors
+      // !this.v$.select.required && errors.push('El servicio es obligatorio')
       return errors
     },
     nameErrors() {
       const errors: any[] = []
-      if (!this.v$.name.$dirty) return errors
-      !this.v$.name.maxLength && errors.push('El nombre debe tener como máximo 10 caracteres')
-      !this.v$.name.required && errors.push('Se requiere el nombre')
+      // if (!this.v$.name.$dirty) return errors
+      // !this.v$.name.maxLength && errors.push('El nombre debe tener como máximo 10 caracteres')
+      // !this.v$.name.required && errors.push('Se requiere el nombre')
       return errors
     },
     emailErrors() {
       const errors: any[] = []
-      if (!this.v$.email.$dirty) return errors
-      !this.v$.email.email && errors.push('Debe ser un correo electrónico válido')
-      !this.v$.email.required && errors.push('Correo electrónico es requerido')
+      // if (!this.v$.email.$dirty) return errors
+      // !this.v$.email.email && errors.push('Debe ser un correo electrónico válido')
+      // !this.v$.email.required && errors.push('Correo electrónico es requerido')
       return errors
     },
   },
 
   methods: {
     submit() {
-      this.v$.$touch()
+      // this.v$.$touch()
     },
     clear() {
-      this.v$.$reset()
-      this.form = {}
+      // this.v$.$reset()
+      this.form = null
       this.name = ''
       this.email = ''
       this.select = null
@@ -99,16 +102,17 @@ export default {
             </p>
             <v-form v-model="form" @submit.prevent="submit">
               <v-text-field v-model="name" :error-messages="nameErrors" :counter="10" label="Nombre" type="input"
-                variant="solo-inverted" required="true" @update:model-value="v$.name.$touch()"
-                @blur="v$.name.$touch()"></v-text-field>
+                variant="solo-inverted" required="true"></v-text-field>
+              <!-- @update:model-value="v$.name.$touch()" @blur="v$.name.$touch()" -->
               <v-text-field v-model="email" :error-messages="emailErrors" label="E-mail" type="email"
-                variant="solo-inverted" required="true" @update:model-value="v$.email.$touch()"
-                @blur="v$.email.$touch()"></v-text-field>
+                variant="solo-inverted" required="true"></v-text-field>
+              <!-- @update:model-value="v$.email.$touch()" @blur="v$.email.$touch()" -->
               <v-select v-model="select" :items="items" :error-messages="selectErrors" label="Servicio"
-                variant="solo-inverted" required="true" @change="v$.select.$touch()"
-                @blur="v$.select.$touch()"></v-select>
+                variant="solo-inverted" required="true"></v-select>
+              <!-- @change="v$.select.$touch()" @blur="v$.select.$touch()" -->
               <v-checkbox v-model="checkbox" label="Estás de acuerdo?" variant="solo-inverted" required="true"
-                :error-messages="checkboxErrors" @change="v$.checkbox.$touch()" @blur="v$.checkbox.$touch()"></v-checkbox>
+                :error-messages="checkboxErrors"></v-checkbox>
+              <!-- @change="v$.checkbox.$touch()" @blur="v$.checkbox.$touch()" -->
               <v-btn class="mr-4" @click="submit">
                 Enviar
               </v-btn>
@@ -185,4 +189,5 @@ v-checkbox {
   height: 25px;
   background-color: white;
   margin: 5px 10px;
-}</style>
+}
+</style>

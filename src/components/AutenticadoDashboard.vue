@@ -1,4 +1,4 @@
-<script lang="ts">
+<script >
 import { useUserStore } from "@/stores/user";
 import { useAuthStore } from "@/stores/auth";
 import VueJwtDecode from "vue-jwt-decode";
@@ -10,34 +10,37 @@ export default {
   components: {
 
   },
-  data: () => ({
-    drawer: false,
-    userStore: useUserStore(),
-    user: {
-      email: "",
-      nombre: ""
-    },
-    auth: false,
-    homeItems: [
-      ['Portafolio', 'mdi-home', 'Portafolio'],
-    ],
-    /*
-      ['Management', 'mdi-account-multiple-outline'],
-      ['Settings', 'mdi-cog-outline', ],
-      ['Create', 'mdi-plus-outline'],
-      ['Read', 'mdi-file-outline'],
-      ['Update', 'mdi-update'],
-      ['Delete', 'mdi-delete']
-    */
-    adminItems: [
-      /* title: icon: ruta: */
-      ['Categorias', 'mdi-table', 'Categorias'],
-      ['Articulos', 'mdi-file', 'Articulos'],
-    ],
-    permisosItems: [
-      ['Usuarios', 'mdi-account', 'Usuarios']
-    ],
-  }),
+  // data: () => ({
+  data() {
+    return {
+      drawer: false,
+      userStore: useUserStore(),
+      user: {
+        email: "",
+        nombre: ""
+      },
+      auth: false,
+      homeItems: [
+        ['Portafolio', 'mdi-home', 'Portafolio'],
+      ],
+      /*
+        ['Management', 'mdi-account-multiple-outline'],
+        ['Settings', 'mdi-cog-outline', ],
+        ['Create', 'mdi-plus-outline'],
+        ['Read', 'mdi-file-outline'],
+        ['Update', 'mdi-update'],
+        ['Delete', 'mdi-delete']
+      */
+      adminItems: [
+        /* title: icon: ruta: */
+        ['Categorias', 'mdi-table', 'Categorias'],
+        ['Articulos', 'mdi-file', 'Articulos'],
+      ],
+      permisosItems: [
+        ['Usuarios', 'mdi-account', 'Usuarios']
+      ],
+    }
+  },
   created() {
     authStore.autoLogin();
     this.getUserDetails();
