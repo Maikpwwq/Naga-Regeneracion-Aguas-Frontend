@@ -1,4 +1,5 @@
-<script setup lang="ts">
+<script setup >
+// lang="ts"
 import { HeaderNav, SecServicios, SecFormulario } from './home/index'
 import SecBanner from './home/SecBanner.vue'
 // import SecServicios from './home/SecServicios.vue'
@@ -7,7 +8,8 @@ import SecCasosExito from './home/SecCasosExito.vue'
 // import SecFormulario from './home/SecFormulario.vue'
 import SecFooter from './home/SecFooter.vue'
 
-// data: () => ({
+// export default {
+//   data: () => ({
 //     icons: [
 //       'mdi-facebook',
 //       'mdi-twitter',
@@ -15,6 +17,8 @@ import SecFooter from './home/SecFooter.vue'
 //       'mdi-instagram',
 //     ],
 //   }),
+// }
+
 </script>
 
 <template>

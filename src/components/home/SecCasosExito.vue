@@ -1,7 +1,7 @@
 <template>
     <div id="stories" class="stories container SecCasos pb-5">
         <div>
-            <h2 class="text-center font-weight-normal pl-5 ml-5">Casos de éxito</h2>
+            <h2 class="text-center fw-normal pl-5 ml-5">Casos de éxito</h2>
         </div>
 
         <div class="row justify-content-evenly">

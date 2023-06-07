@@ -4,7 +4,14 @@ const userStore = useUserStore();
 </script>
 
 <template>
-    <v-app-bar app>
+    <v-app-bar app class="fixed-top">
+        <v-app-bar-title>
+            <a class="navbar-brand" href="/">
+                <img src="/img/Naga.jpg" class="img-flui" title="Logo Naga" width="33px"
+                    alt="Naga Regeneración de aguas" />
+                Naga | Regeneración de aguas
+            </a>
+        </v-app-bar-title>
         <v-spacer></v-spacer>
         <v-tabs color="deep-purple accent-4" right>
             <template v-if="!userStore.user">

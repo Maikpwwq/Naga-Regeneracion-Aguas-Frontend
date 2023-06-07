@@ -11,6 +11,8 @@ export default {
   //   return { v$: useVuelidate() }
   // },
 
+  // TODO: reimplement vuelidate
+
   validations: {
     name: { required, maxLength: maxLength(10) },
     email: { required, email },
@@ -67,6 +69,7 @@ export default {
 
   methods: {
     submit() {
+      console.log("submit")
       // this.v$.$touch()
     },
     clear() {
@@ -100,26 +103,28 @@ export default {
                 Uno de nuestros asesores le contactara pronto para <br> ayudarlo a elegir la configuración más acertada.
               </em>
             </p>
-            <v-form v-model="form" @submit.prevent="submit">
-              <v-text-field v-model="name" :error-messages="nameErrors" :counter="10" label="Nombre" type="input"
-                variant="solo-inverted" required="true"></v-text-field>
-              <!-- @update:model-value="v$.name.$touch()" @blur="v$.name.$touch()" -->
-              <v-text-field v-model="email" :error-messages="emailErrors" label="E-mail" type="email"
-                variant="solo-inverted" required="true"></v-text-field>
-              <!-- @update:model-value="v$.email.$touch()" @blur="v$.email.$touch()" -->
-              <v-select v-model="select" :items="items" :error-messages="selectErrors" label="Servicio"
-                variant="solo-inverted" required="true"></v-select>
-              <!-- @change="v$.select.$touch()" @blur="v$.select.$touch()" -->
-              <v-checkbox v-model="checkbox" label="Estás de acuerdo?" variant="solo-inverted" required="true"
-                :error-messages="checkboxErrors"></v-checkbox>
-              <!-- @change="v$.checkbox.$touch()" @blur="v$.checkbox.$touch()" -->
-              <v-btn class="mr-4" @click="submit">
-                Enviar
-              </v-btn>
-              <v-btn @click="clear">
-                Limpiar
-              </v-btn>
-            </v-form>
+            <v-responsive class="mx-auto" max-width="344">
+              <v-form v-model="form" @submit.prevent="submit">
+                <v-text-field v-model="name" :counter="10" label="Nombre" type="input"
+                  variant="solo" required="true"></v-text-field>
+                <!-- :error-messages="nameErrors" @update:model-value="v$.name.$touch()" @blur="v$.name.$touch()" -->
+                <v-text-field v-model="email" label="E-mail" type="email"
+                  variant="solo" required="true"></v-text-field>
+                <!-- :error-messages="emailErrors" @update:model-value="v$.email.$touch()" @blur="v$.email.$touch()" -->
+                <v-select v-model="select" :items="items"  label="Servicio"
+                  variant="solo" required="true"></v-select>
+                <!-- :error-messages="selectErrors" @change="v$.select.$touch()" @blur="v$.select.$touch()" -->
+                <v-checkbox v-model="checkbox" label="Estás de acuerdo?" variant="solo" required="true"
+                  ></v-checkbox>
+                <!-- :error-messages="checkboxErrors" @change="v$.checkbox.$touch()" @blur="v$.checkbox.$touch()" -->
+                <v-btn class="mr-4" @click="submit" variant="outlined">
+                  Enviar
+                </v-btn>
+                <v-btn @click="clear" variant="tonal">
+                  Limpiar
+                </v-btn>
+              </v-form>
+            </v-responsive>
           </v-card>
         </div>
         <div class="col-sm-12 col-md-6 my-3">

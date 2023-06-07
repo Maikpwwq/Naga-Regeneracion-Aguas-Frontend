@@ -1,4 +1,4 @@
-<script lang="ts">
+<script >
 import axios from 'axios';
 import swal from 'sweetalert';
 import { useTokenStore } from "@/stores/token";
@@ -20,14 +20,21 @@ export default {
       },
       valid: true,
       passwordRules: [
-        (v: any) => !!v || 'El campo Password es requerido',
-        (v: string | any[]) => (v && v.length >= 10) || 'Password debe contener almenos 8 caracteres',
+        (v) => !!v || 'El campo Password es requerido',
+        (v) => (v && v.length >= 10) || 'Password debe contener almenos 8 caracteres',
       ],
       emailRules: [
-        (v: any) => !!v || 'El campo E-mail es requerido',
-        (v: string) => /.+@.+\..+/.test(v) || 'el E-mail debe ser valido',
+        (v) => !!v || 'El campo E-mail es requerido',
+        (v) => /.+@.+\..+/.test(v) || 'el E-mail debe ser valido',
       ],
-
+      // passwordRules: [
+      //   (v: any) => !!v || 'El campo Password es requerido',
+      //   (v: string | any[]) => (v && v.length >= 10) || 'Password debe contener almenos 8 caracteres',
+      // ],
+      // emailRules: [
+      //   (v: any) => !!v || 'El campo E-mail es requerido',
+      //   (v: string) => /.+@.+\..+/.test(v) || 'el E-mail debe ser valido',
+      // ],
     }
   },
   beforeCreate() {

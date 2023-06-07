@@ -73,7 +73,7 @@ export default {
 <template>
   <div id="services" class="services container SecServicios">
     <div>
-      <h2 class="text-center font-weight-normal pl-5 mlr-5">Servicios</h2>
+      <h2 class="text-center fw-normal pl-5 mlr-5">Servicios</h2>
     </div>
 
     <div class="row justify-content-center">
@@ -85,19 +85,19 @@ export default {
             <p class="card-text text-dark">{{ categoria.descripcion }}
             </p>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-info text-white float-right" data-toggle="modal"
-              data-target="#staticBackdrop">
+            <button type="button" class="btn btn-info text-white float-right" data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop">
               VER PORTAFOLIO
             </button>
 
             <!-- Modal -->
-            <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1"
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" tabindex="-1"
               aria-labelledby="staticBackdropLabel" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                   <div class="modal-header bg-dark">
                     <h5 class="modal-title text-white" id="staticBackdrop1">Portafolio de productos</h5>
-                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close text-white" data-bs-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
@@ -116,7 +116,7 @@ export default {
                     </p>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-info text-white" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-info text-white" data-bs-dismiss="modal">OK</button>
                   </div>
                 </div>
               </div>

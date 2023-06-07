@@ -322,9 +322,7 @@ export default {
     </template>
     <template v-slot="{ item }"> 
       <!-- :[`item.actions`] -->
-      <v-icon size="small" class="mr-2" @click="editItem(item)">
-        mdi-pencil
-      </v-icon>
+      <v-icon size="small" icon="mdi-pencil" class="mr-2" @click="editItem(item)" />
       <v-icon size="medium" @click="deleteItem(item)">
         <template v-if="item.estado">
           mdi-toggle-switch
